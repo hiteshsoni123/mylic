@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dashboard · My LIC Record</title>
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<div class="app-shell">
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="brand"><span class="logo">📋</span><div>My LIC Record<small>Customer Manager</small></div></div>
+    <nav class="nav">
+      <a href="/index.html" class="active"><span class="icon">🏠</span> Dashboard</a>
+      <a href="/calls.html"><span class="icon">📞</span> Call Report</a>
+      <a href="/bulk.html"><span class="icon">💬</span> Bulk WhatsApp</a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="logout-btn" id="logoutBtn">🚪 Logout</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <button class="hamburger" id="hamburger">☰</button>
+        <h1>Dashboard</h1>
+        <p>Namaste! Aapke customers ka pura record yahan hai.</p>
+      </div>
+      <button class="btn btn-primary" id="addCustomerBtn">➕ Add Customer</button>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="emoji">👥</div>
+        <div><div class="value" id="statTotal">0</div><div class="label">Total Customers</div></div>
+      </div>
+      <div class="stat-card">
+        <div class="emoji">🎂</div>
+        <div><div class="value" id="statBdayToday">0</div><div class="label">Birthdays Today</div></div>
+      </div>
+      <div class="stat-card">
+        <div class="emoji">📅</div>
+        <div><div class="value" id="statBdayWeek">0</div><div class="label">Birthdays this Week</div></div>
+      </div>
+      <div class="stat-card">
+        <div class="emoji">📞</div>
+        <div><div class="value" id="statCallsToday">0</div><div class="label">Calls Today</div></div>
+      </div>
+    </div>
+
+    <div class="card" id="bdayCard">
+      <div class="card-head"><h2>🎉 Birthday Reminders</h2></div>
+      <div class="bday-list" id="bdayList"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h2>👥 All Customers</h2>
+      </div>
+      <div class="search-bar">
+        <input type="search" id="searchInput" placeholder="Search by name or mobile..." />
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Name</th><th>Mobile</th><th>Birthday</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="customerTableBody"></tbody>
+        </table>
+      </div>
+      <div class="empty-state" id="emptyState" style="display:none;">
+        <div class="big">🗂️</div>
+        <p>Abhi koi customer nahi hai. "Add Customer" dabakar shuru karein.</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Add / Edit Customer Modal -->
+<div class="modal-overlay" id="customerModal">
+  <div class="modal">
+    <h2 id="modalTitle">Add Customer</h2>
+    <form id="customerForm">
+      <input type="hidden" id="customerId" />
+      <div class="field">
+        <label for="custName">Customer Name</label>
+        <input type="text" id="custName" required placeholder="e.g. Ramesh Kumar" />
+      </div>
+      <div class="field">
+        <label for="custMobile">Mobile Number</label>
+        <input type="tel" id="custMobile" required placeholder="e.g. 9876543210" />
+      </div>
+      <div class="field">
+        <label for="custBirthday">Birth Day</label>
+        <input type="date" id="custBirthday" required />
+      </div>
+      <div class="field">
+        <label for="custNotes">Notes (optional)</label>
+        <textarea id="custNotes" placeholder="Policy number, plan, etc."></textarea>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-outline" id="cancelModalBtn">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="saveCustomerBtn">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="toast"></div>
+<script src="/app.js"></script>
+<script src="/dashboard.js"></script>
+</body>
+</html>

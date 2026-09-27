@@ -1,0 +1,14 @@
+{
+  "name": "my-lic-record",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "wrangler pages dev public --d1=DB --local --persist-to=.wrangler/state",
+    "db:migrate:local": "wrangler d1 execute my_lic_record_db --local --file=./migrations/0001_init.sql",
+    "db:migrate:remote": "wrangler d1 execute my_lic_record_db --remote --file=./migrations/0001_init.sql",
+    "deploy": "wrangler pages deploy public --project-name=my-lic-record"
+  },
+  "devDependencies": {
+    "wrangler": "^4.86.0"
+  }
+}

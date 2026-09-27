@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Call Report · My LIC Record</title>
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<div class="app-shell">
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="brand"><span class="logo">📋</span><div>My LIC Record<small>Customer Manager</small></div></div>
+    <nav class="nav">
+      <a href="/index.html"><span class="icon">🏠</span> Dashboard</a>
+      <a href="/calls.html" class="active"><span class="icon">📞</span> Call Report</a>
+      <a href="/bulk.html"><span class="icon">💬</span> Bulk WhatsApp</a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="logout-btn" id="logoutBtn">🚪 Logout</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <button class="hamburger" id="hamburger">☰</button>
+        <h1>Call Report</h1>
+        <p>Har call ka date &amp; time record, sabse recent sabse upar.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h2>📞 Call History</h2></div>
+      <div class="search-bar">
+        <select id="customerFilter">
+          <option value="">All Customers</option>
+        </select>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Customer</th><th>Mobile</th><th>Called At</th></tr></thead>
+          <tbody id="callsTableBody"></tbody>
+        </table>
+      </div>
+      <div class="empty-state" id="emptyCalls" style="display:none;">
+        <div class="big">📵</div>
+        <p>Abhi tak koi call log nahi hai. Dashboard se "Call" button dabaakar shuru karein.</p>
+      </div>
+    </div>
+  </main>
+</div>
+<div id="toast"></div>
+<script src="/app.js"></script>
+<script src="/calls.js"></script>
+</body>
+</html>
